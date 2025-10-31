@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const editables = document.querySelectorAll("[contenteditable='true']");
+  editables.forEach(el => {
+    const saved = localStorage.getItem(el.id);
+    if (saved) el.innerHTML = saved;
+
+    el.addEventListener("input", () => {
+      localStorage.setItem(el.id, el.innerHTML);
+    });
+  });
+});
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalina & Luis 💍</title>
@@ -47,9 +61,29 @@
       margin-top: 40px;
       font-size: 0.9rem;
     }
+    <style>
+.edit-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #f7dde6;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+.edit-btn:hover {
+  background-color: #f2cce0;
+}
+</style>
+
   </style>
 </head>
 <body>
+  <button id="editToggle" class="edit-btn">🛠️ Modo edición</button>
   <header>
     <h1 style="color:#a675a1; margin:0; font-family:'Poppins',sans-serif;">Catalina & Luis 💍</h1>
     <nav>
@@ -74,10 +108,12 @@
     Mientras llega el gran día hemos creado esta web con un montón de secciones para que estés al día de todo y para compartir nuestra historia de amor.
     Una cosa importante, en la sección asistencia puedes confirmar si vas al matrimonio o no y además seleccionar tu tipo de menú. Confírmanos lo antes posible por favor, porque así nos será mucho más fácil organizarlo todo.
                                                  En la sección "Novios Falabella" podrás encontrar nuestra lista y código de novios.
-                                                           Disfruta la web y nos vemos muy pronto, mil besos!
-                                          Nuestro amor nos trajo hasta aquí, listos para comenzar una nueva aventura juntos.”</p>
+                                                           Disfruta la web y nos vemos muy pronto, mil besos!</h1> <p id="mensaje" contenteditable="true"data-editable>
+                                          Nuestro amor nos trajo hasta aquí, listos para comenzar una nueva aventura juntos.”
+                                                               </p>
+</section>
      <!-- Fotos en la página de inicio -->
-<section style="margin-top:40px; text-align:center;">
+<section style="margin-top:40px; text-align:center;"data-editable> 
   <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
     <img src="https://github.com/cbrownramirez-prog/Catalinayluis.github.io/blob/main/IMG_20230503_194815_284.jpg?raw=true" 
          alt="Catalina y Luis 1" 
@@ -127,5 +163,35 @@
   <footer>
     © 2026 Catalina & Luis 💕 | Todos los derechos reservados
   </footer>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const editButton = document.getElementById("editToggle");
+  const editables = document.querySelectorAll("[data-editable]");
+  let editing = false;
+
+  // Cargar texto guardado
+  editables.forEach(el => {
+    const saved = localStorage.getItem(el.id);
+    if (saved) el.innerHTML = saved;
+  });
+
+  editButton.addEventListener("click", () => {
+    editing = !editing;
+    editButton.textContent = editing ? "💾 Guardar cambios" : "🛠️ Modo edición";
+    editables.forEach(el => {
+      el.contentEditable = editing;
+      el.style.outline = editing ? "1px dashed #c76eb4" : "none";
+    });
+
+    // Si se desactiva el modo edición, guarda los cambios
+    if (!editing) {
+      editables.forEach(el => {
+        localStorage.setItem(el.id, el.innerHTML);
+      });
+      alert("✅ Cambios guardados en este navegador");
+    }
+  });
+});
+</script>
 </body>
 </html>
