@@ -17,7 +17,35 @@
       --radius: 14px;
       --max-width: 1100px;
     }
+ <!-- Cuenta regresiva para el matrimonio -->
+<section id="countdown" style="text-align:center; margin: 60px 0;">
+  <h2>✨ ¡Falta muy poco para nuestro gran día! ✨</h2>
+  <div id="timer" style="font-size: 2rem; font-weight: bold; color: #6b6b6b; margin-top: 20px;">
+    Cargando cuenta regresiva...
+  </div>
+</section>
 
+<script>
+  // Fecha del matrimonio (21 Marzo 2026, 16:30 hora de Chile)
+  const weddingDate = new Date("March 21, 2026 16:30:00").getTime();
+
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+      `${days} días ${hours} horas ${minutes} min ${seconds} seg`;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("timer").innerHTML = "💍 ¡Ya llegó el gran día! 💐";
+    }
+  }, 1000);
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -51,35 +79,7 @@
 
     /* Sections */
     section{margin-top:22px}
-    <!-- Cuenta regresiva para el matrimonio -->
-<section id="countdown" style="text-align:center; margin: 60px 0;">
-  <h2>✨ ¡Falta muy poco para nuestro gran día! ✨</h2>
-  <div id="timer" style="font-size: 2rem; font-weight: bold; color: #6b6b6b; margin-top: 20px;">
-    Cargando cuenta regresiva...
-  </div>
-</section>
-
-<script>
-  // Fecha del matrimonio (21 Marzo 2026, 16:30 hora de Chile)
-  const weddingDate = new Date("March 21, 2026 16:30:00").getTime();
-
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("timer").innerHTML =
-      `${days} días ${hours} horas ${minutes} min ${seconds} seg`;
-
-    if (distance < 0) {
-      clearInterval(timer);
-      document.getElementById("timer").innerHTML = "💍 ¡Ya llegó el gran día! 💐";
-    }
-  }, 1000);
+   
 </script>
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
