@@ -335,19 +335,63 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
   </script>
-   <!-- Cuenta regresiva para el matrimonio -->
-<section id="countdown" style="text-align:center; margin: 60px 0;">
-  <h2>✨ ¡Falta muy poco para nuestro gran día! ✨</h2>
-  <div id="timer" style="font-size: 2rem; font-weight: bold; color: #6b6b6b; margin-top: 20px;">
-    Cargando cuenta regresiva...
+  <!-- 💍 Cuenta regresiva -->
+<section id="countdown" style="text-align:center; margin: 80px 0;">
+  <h2 style="color:#a675a1; font-size: 2rem; margin-bottom: 20px;">
+    ✨ ¡Falta muy poco para nuestro gran día! ✨
+  </h2>
+
+  <div id="timer" style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+    <div class="time-box">
+      <span id="days">0</span>
+      <small>Días</small>
+    </div>
+    <div class="time-box">
+      <span id="hours">0</span>
+      <small>Horas</small>
+    </div>
+    <div class="time-box">
+      <span id="minutes">0</span>
+      <small>Minutos</small>
+    </div>
+    <div class="time-box">
+      <span id="seconds">0</span>
+      <small>Segundos</small>
+    </div>
   </div>
 </section>
 
+<style>
+  .time-box {
+    background: #f8e9f0;
+    color: #444;
+    border-radius: 16px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .time-box span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #a675a1;
+  }
+
+  .time-box small {
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+
 <script>
-  // Fecha del matrimonio (21 Marzo 2026, 16:30 hora de Chile)
   const weddingDate = new Date("March 21, 2026 16:30:00").getTime();
 
-  const timer = setInterval(() => {
+  const updateCountdown = () => {
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
@@ -356,13 +400,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("timer").innerHTML =
-      `${days} días ${hours} horas ${minutes} min ${seconds} seg`;
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
 
     if (distance < 0) {
       clearInterval(timer);
-      document.getElementById("timer").innerHTML = "💍 ¡Ya llegó el gran día! 💐";
+      document.getElementById("countdown").innerHTML =
+        "<h2 style='color:#a675a1;'>💐 ¡Hoy celebramos nuestro amor! 💍</h2>";
     }
-  }, 1000);
+  };
+
+  const timer = setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
 </body>
 </html>
