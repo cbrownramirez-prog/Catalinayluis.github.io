@@ -62,6 +62,23 @@ document.addEventListener("DOMContentLoaded", function() {
       font-size: 0.9rem;
     }
     <style>
+    .edit-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #f7dde6;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+.edit-btn:hover {
+  background-color: #f2cce0;
+}
+
 .edit-btn {
   position: fixed;
   top: 10px;
@@ -83,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </style>
 </head>
 <body>
+  <button id="editToggle" class="edit-btn">🔒 Administrar</button>
   <button id="editToggle" class="edit-btn">🛠️ Modo edición</button>
   <header>
     <h1 style="color:#a675a1; margin:0; font-family:'Poppins',sans-serif;">Catalina & Luis 💍</h1>
@@ -184,6 +202,45 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Si se desactiva el modo edición, guarda los cambios
+    if (!editing) {
+      editables.forEach(el => {
+        localStorage.setItem(el.id, el.innerHTML);
+      });
+      alert("✅ Cambios guardados en este navegador");
+    }
+  });
+});
+</script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const editButton = document.getElementById("editToggle");
+  const editables = document.querySelectorAll("[data-editable]");
+  let editing = false;
+  const adminPin = "2025"; // 🔐 Cambia este PIN por el que tú quieras
+
+  // Cargar texto guardado (solo local)
+  editables.forEach(el => {
+    const saved = localStorage.getItem(el.id);
+    if (saved) el.innerHTML = saved;
+  });
+
+  editButton.addEventListener("click", () => {
+    if (!editing) {
+      const pin = prompt("Ingrese el PIN de administrador:");
+      if (pin !== adminPin) {
+        alert("❌ PIN incorrecto");
+        return;
+      }
+    }
+
+    editing = !editing;
+    editButton.textContent = editing ? "💾 Guardar cambios" : "🔒 Administrar";
+    editables.forEach(el => {
+      el.contentEditable = editing;
+      el.style.outline = editing ? "1px dashed #c76eb4" : "none";
+    });
+
+    // Si se desactiva el modo edición, guardar cambios
     if (!editing) {
       editables.forEach(el => {
         localStorage.setItem(el.id, el.innerHTML);
