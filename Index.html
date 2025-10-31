@@ -1,0 +1,337 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catalina & Luis — 21 Marzo 2026</title>
+  <meta name="description" content="Página oficial del matrimonio de Catalina y Luis — 21 de marzo de 2026. RSVP, ubicación y galería." />  <style>
+    :root{
+      --bg:#fffaf6;
+      --accent-1: #F7DDE6; /* pastel rosa */
+      --accent-2: #E8F4F1; /* mint */
+      --accent-3: #F6F0E6; /* crema */
+      --text:#333;
+      --muted:#6b6b6b;
+      --card-bg: rgba(255,255,255,0.7);
+      --radius: 14px;
+      --max-width: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, var(--accent-1) 0%, transparent 15%),
+                  radial-gradient(1000px 500px at 90% 90%, var(--accent-2) 0%, transparent 12%),
+                  var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:60px;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(45deg,var(--accent-1),var(--accent-3));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--text)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center;margin-top:14px}
+    .card{background:var(--card-bg);padding:24px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(30,30,30,0.06)}
+    .hero-left h1{margin:0;font-size:38px;letter-spacing:0.4px}
+    .date{color:var(--muted);margin-top:6px}
+    .love-message{margin-top:16px;font-size:16px;color:var(--text)}
+
+    .floral-svg{width:100%;height:auto;border-radius:12px;overflow:hidden}
+
+    /* Sections */
+    section{margin-top:22px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+    .map{height:220px;border-radius:12px;overflow:hidden}
+
+    /* RSVP form */
+    form .row{display:flex;gap:10px;margin-bottom:10px}
+    form input[type=text], form select{flex:1;padding:10px;border-radius:10px;border:1px solid #eee}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border:none;font-weight:700;cursor:pointer}
+
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .placeholder{display:flex;align-items:center;justify-content:center;height:140px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.4));border:1px dashed rgba(0,0,0,0.06);color:var(--muted)}
+
+    footer{margin-top:34px;padding:18px 0;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* editable highlight */
+    [contenteditable]{outline:2px dashed transparent;padding:4px}
+    [contenteditable]:focus{outline:2px dashed rgba(0,0,0,0.08);background:rgba(255,255,255,0.6)}
+
+    .controls{display:flex;gap:8px;align-items:center}
+    .small{font-size:13px;color:var(--muted)}
+
+    .add-section{margin-top:12px}
+
+  </style></head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">C&amp;L</div>
+        <div>
+          <div style="font-weight:800">Catalina &amp; Luis</div>
+          <div class="small">21 de marzo de 2026 • Ñuñoa & Peñalolén</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#historia">Nuestra historia</a>
+        <a href="#lugares">Ceremonia & Fiesta</a>
+        <a href="#rsvp">Confirmación</a>
+        <a href="#galeria">Galería</a>
+      </nav>
+    </header><!-- HERO / Inicio -->
+<section id="inicio" class="hero">
+  <div class="card hero-left">
+    <h1 contenteditable id="hero-title">Catalina &amp; Luis</h1>
+    <div class="date">21 de marzo de 2026 — 16:30</div>
+
+    <p class="love-message" contenteditable id="love-message">Nuestro amor nos trajo hasta aquí. Te invitamos a celebrar con nosotros este nuevo comienzo — ¡nos vemos el 21 de marzo!</p>
+
+    <div class="controls" style="margin-top:14px">
+      <button class="btn" id="editToggle">Editar</button>
+      <button class="btn" id="saveBtn">Guardar cambios</button>
+      <div style="margin-left:auto;text-align:right">
+        <div class="small">Colores: flores color pastel variadas</div>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:10px">(Puedes editar cualquier texto directamente. Presiona "Guardar cambios" para mantener los cambios en tu navegador.)</p>
+  </div>
+
+  <div class="card">
+    <!-- simple floral SVG decor -->
+    <svg class="floral-svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0" stop-color="#FAD9E8" />
+          <stop offset="1" stop-color="#E3F6F0" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="400" fill="url(#g1)" />
+      <!-- stylized pastel flowers -->
+      <g transform="translate(40,30)">
+        <circle cx="40" cy="60" r="28" fill="#FDE8F0" />
+        <circle cx="20" cy="40" r="8" fill="#FFD6E8" />
+        <g transform="translate(180,60)">
+          <ellipse cx="0" cy="0" rx="34" ry="14" fill="#F6EDE8" />
+          <circle cx="-12" cy="-6" r="6" fill="#E7F6EE" />
+        </g>
+        <g transform="translate(100,150)">
+          <circle cx="0" cy="0" r="36" fill="#FFF0E6" />
+          <circle cx="-10" cy="-6" r="6" fill="#FDEAEF" />
+        </g>
+        <g transform="translate(320,140)">
+          <path d="M0 0 C20 -24 80 -24 100 0 C80 24 20 24 0 0Z" fill="#F9F1FF" />
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- Nuestra historia -->
+<section id="historia" class="card">
+  <h2 contenteditable id="historia-title">Nuestra historia</h2>
+  <p contenteditable id="historia-text">Aquí puedes contar cómo se conocieron, anécdotas, o un pequeño cronograma: desde las primeras citas hasta la propuesta. Esta área es editable — haz click y escribe.</p>
+</section>
+
+<!-- Lugares -->
+<section id="lugares" class="card">
+  <h2>Ceremonia &amp; Fiesta</h2>
+  <div class="two-col">
+    <div>
+      <h3>Ceremonia — Parroquia Santa Gema Galgani (Ñuñoa)</h3>
+      <p class="small">Hora: 16:30 — 21 de marzo de 2026</p>
+      <div class="map" id="map1">Mapa: Parroquia Santa Gema Galgani</div>
+    </div>
+    <div>
+      <h3>Fiesta — Club de Campo Militar (Peñalolén)</h3>
+      <p class="small">Dirección y cómo llegar abajo</p>
+      <div class="map" id="map2">Mapa: Club de Campo Militar</div>
+    </div>
+  </div>
+
+  <p class="small" style="margin-top:12px">(Los mapas muestran marcadores; cuando publiques puedes reemplazar los divs por <code>&lt;iframe&gt;</code> de Google Maps con las direcciones reales).</p>
+</section>
+
+<!-- Confirmación / RSVP -->
+<section id="rsvp" class="card">
+  <h2>Confirmación (RSVP)</h2>
+  <p class="small">Por favor confirma tu asistencia y elige tu menú.</p>
+
+  <!-- NOTE: Reemplaza action del formulario por tu endpoint de Formspree o Netlify Forms -->
+  <form id="rsvpForm" action="" method="POST">
+    <div class="row">
+      <input type="text" name="nombre" placeholder="Nombre completo" required />
+    </div>
+    <div class="row">
+      <select name="asistencia" required>
+        <option value="">Asistirás?</option>
+        <option value="si">Sí, asistiré</option>
+        <option value="no">No podré asistir</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <select name="menu" required>
+        <option value="">Elige menú</option>
+        <option value="normal">Normal</option>
+        <option value="vegetariano">Vegetariano</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <input type="text" name="mensaje" placeholder="Mensaje (opcional)" />
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="btn" type="submit">Enviar confirmación</button>
+      <div class="small">(Para recibir las respuestas por correo: crea una cuenta gratuita en Formspree o Netlify y pega tu endpoint en el atributo <code>action</code> del formulario.)</div>
+    </div>
+  </form>
+
+  <div id="formResult" style="margin-top:12px;display:none"></div>
+</section>
+
+<!-- Galería -->
+<section id="galeria" class="card">
+  <h2>Galería</h2>
+  <p class="small">Sube aquí las fotos de compromiso o del evento. (En la versión inicial están espacios vacíos que puedes reemplazar con &lt;img&gt;).</p>
+  <div class="gallery-grid" id="gallery">
+    <div class="placeholder">Añade tus fotos aquí</div>
+    <div class="placeholder">Añade tus fotos aquí</div>
+    <div class="placeholder">Añade tus fotos aquí</div>
+  </div>
+
+  <div class="add-section">
+    <button class="btn" id="addSectionBtn">Agregar sección</button>
+    <div class="small" style="margin-top:8px">Al presionar esto se duplica una plantilla que podrás editar para crear nuevas secciones (por ejemplo: regalos, playlist, cuenta regresiva).</div>
+  </div>
+</section>
+
+<!-- template (hidden) -->
+<template id="sectionTemplate">
+  <section class="card new-section">
+    <h2 contenteditable>Nueva sección</h2>
+    <p contenteditable>Escribe aquí el contenido de la nueva sección. Puedes editar este texto o eliminar la sección editando el HTML.</p>
+  </section>
+</template>
+
+<footer>
+  Diseñado con ❤️ — editable. Si necesitas ayuda para publicar, puedo guiarte paso a paso.
+</footer>
+
+  </div>  <script>
+    // --- Editable text saving ---
+    const saveBtn = document.getElementById('saveBtn');
+    const editToggle = document.getElementById('editToggle');
+    const editableEls = document.querySelectorAll('[contenteditable]');
+
+    function setEditable(on){
+      editableEls.forEach(el => el.contentEditable = on);
+      editToggle.textContent = on ? 'Salir edición' : 'Editar';
+    }
+
+    editToggle.addEventListener('click', ()=>{
+      const currently = editableEls[0].isContentEditable;
+      setEditable(!currently);
+    });
+
+    // load saved content
+    function loadSaved(){
+      editableEls.forEach(el =>{
+        const key = 'wedding_'+(el.id||el.tagName+el.className);
+        const v = localStorage.getItem(key);
+        if(v) el.innerHTML = v;
+      });
+    }
+    loadSaved();
+
+    saveBtn.addEventListener('click', ()=>{
+      editableEls.forEach(el =>{
+        const key = 'wedding_'+(el.id||el.tagName+el.className);
+        localStorage.setItem(key, el.innerHTML);
+      });
+      alert('Cambios guardados en este navegador. Para publicar cambios permanentes actualiza el HTML en tu repositorio.');
+    });
+
+    // --- Add section ---
+    const addBtn = document.getElementById('addSectionBtn');
+    addBtn.addEventListener('click', ()=>{
+      const tpl = document.getElementById('sectionTemplate');
+      const clone = tpl.content.cloneNode(true);
+      document.getElementById('galeria').after(clone);
+      alert('Se ha agregado una nueva sección editable. Presiona "Editar" para modificarla y luego "Guardar cambios" para almacenarla localmente en tu navegador.');
+    });
+
+    // --- RSVP form ---
+    const form = document.getElementById('rsvpForm');
+    const formResult = document.getElementById('formResult');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const action = form.getAttribute('action');
+      const data = new FormData(form);
+
+      // If the author hasn't set an action (Formspree/Netlify), show a friendly preview and open mailto
+      if(!action){
+        const values = Object.fromEntries(data.entries());
+        formResult.style.display = 'block';
+        formResult.innerHTML = `<div class="card">Gracias — tu respuesta ha sido registrada (local).<br/><pre style="white-space:pre-wrap">${JSON.stringify(values,null,2)}</pre><p class="small">Para recibir las respuestas por correo automáticamente: crea una cuenta en Formspree (gratuita) o Netlify Forms y pega tu endpoint en el atributo <code>action</code> del formulario en el archivo HTML.</p></div>`;form.reset();
+    return;
+  }
+
+  // Try to POST to the action endpoint
+  try{
+    const resp = await fetch(action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+    if(resp.ok){
+      formResult.style.display='block';
+      formResult.innerHTML = '<div class="card">Gracias por confirmar. Hemos recibido tu respuesta.</div>';
+      form.reset();
+    } else {
+      const txt = await resp.text();
+      formResult.style.display='block';
+      formResult.innerHTML = '<div class="card">Hubo un problema al enviar. Comprueba tu endpoint o usa Formspree. Respuesta: '+txt+'</div>';
+    }
+  }catch(err){
+    formResult.style.display='block';
+    formResult.innerHTML = '<div class="card">Error al enviar: '+err.message+'</div>';
+  }
+});
+
+// --- Sample: replace map placeholders with Google Maps iframes when published ---
+// (Instructions are in the HTML comments)
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  })
+});
+
+  </script>
+</body>
+</html>
